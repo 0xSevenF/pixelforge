@@ -1,133 +1,234 @@
 :root {
-    --primary: #5b8cff;
-    --dark: #111827;
-    --light: #f9fafb;
-    --gray: #6b7280;
+    --bg: #0b0c0f;
+    --surface: #111318;
+    --surface-2: #161a22;
+    --text: #ffffff;
+    --muted: #9ca3af;
+    --gold: #c6a14a;
+    --gold-dark: #a88633;
+    --border: #22262f;
+
+    --font-heading: "Playfair Display", serif;
+    --font-body: "Inter", sans-serif;
 }
 
-/* Reset & base */
+/* =========================
+   Reset
+========================= */
+
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    box-sizing: border-box;
 }
 
 body {
-    background: var(--light);
-    color: var(--dark);
-    line-height: 1.6;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Header */
+/* =========================
+   Header
+========================= */
+
 header {
-    padding: 2rem;
+    padding: 6rem 1rem 4rem;
     text-align: center;
+    border-bottom: 1px solid var(--border);
 }
 
 header h1 {
-    font-size: 2.8rem;
-    margin-bottom: 1rem;
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+header h1 span {
+    font-size: 0.9rem;
+    background: var(--gold);
+    color: black;
+    padding: 6px 12px;
+    margin-left: 12px;
+    vertical-align: middle;
 }
 
 header p {
-    color: var(--gray);
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: auto;
-}
-
-/* Hero */
-.hero {
-    text-align: center;
-    padding: 3rem 1rem;
-}
-
-.download-buttons {
     margin-top: 2rem;
+    color: var(--muted);
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.btn {
+/* =========================
+   Hero
+========================= */
+
+.hero {
+    padding: 6rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.hero h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.download-buttons .btn {
     display: inline-block;
-    padding: 0.9rem 1.8rem;
-    margin: 0.5rem;
-    border-radius: 8px;
+    padding: 1rem 2.8rem;
+    margin: 0.5rem 1rem;
     text-decoration: none;
     font-weight: 600;
-    transition: 0.3s ease;
+    letter-spacing: 0.5px;
+    border: 2px solid var(--gold);
+    transition: 0.25s ease;
 }
 
+/* Primary Button */
 .btn-primary {
-    background: var(--primary);
-    color: white;
+    background: var(--gold);
+    color: black;
 }
 
 .btn-primary:hover {
-    opacity: 0.9;
+    background: var(--gold-dark);
 }
 
+/* Outline Button */
 .btn-outline {
-    border: 2px solid var(--primary);
-    color: var(--primary);
+    background: transparent;
+    color: var(--gold);
 }
 
 .btn-outline:hover {
-    background: var(--primary);
-    color: white;
+    background: var(--gold);
+    color: black;
 }
 
-/* Sections */
-section {
-    padding: 4rem 1rem;
-    max-width: 1100px;
+/* =========================
+   Beta Section
+========================= */
+
+.beta-section {
+    padding: 5rem 2rem;
+    text-align: center;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.beta-section h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--gold);
+}
+
+.beta-section p {
+    color: var(--muted);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.beta-section a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.beta-section a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   Features
+========================= */
+
+.features-section {
+    padding: 6rem 1rem;
+    max-width: 1200px;
     margin: auto;
 }
 
-/* Features */
+.features-section h2 {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    margin-bottom: 4rem;
+}
+
 .features {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
 }
 
 .feature {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    padding: 2.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: 0.3s ease;
+}
+
+.feature:hover {
+    border-color: var(--gold);
 }
 
 .feature h3 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
     margin-bottom: 1rem;
+    color: var(--gold);
 }
 
-/* Screenshots */
+.feature p {
+    color: var(--muted);
+}
+
+/* =========================
+   Screenshots
+========================= */
+
 .screenshots-section {
-    padding: 4rem 1rem;
-    max-width: 1100px;
-    margin: auto;
+    padding: 6rem 1rem;
+    background: var(--surface-2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.screenshots-section h2 {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    margin-bottom: 4rem;
 }
 
 .screenshots-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .screenshot-item {
     position: relative;
     overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border);
 }
 
 .screenshot-item img {
     width: 100%;
     display: block;
-    border-radius: 12px;
-    transition: transform 0.3s ease;
+    transition: 0.4s ease;
 }
 
 .screenshot-item:hover img {
@@ -138,90 +239,92 @@ section {
     position: absolute;
     bottom: 0;
     width: 100%;
-    padding: 0.5rem 1rem;
-    background: rgba(0,0,0,0.5);
-    color: white;
-    font-size: 0.85rem;
+    background: rgba(0,0,0,0.85);
+    padding: 1rem;
     text-align: center;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-    transition: background 0.3s ease;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
 }
 
-.screenshot-item:hover .caption {
-    background: rgba(0,0,0,0.7);
-}
+/* =========================
+   Crypto Section
+========================= */
 
-@media (max-width: 500px) {
-    .screenshot-item .caption {
-        font-size: 0.75rem;
-        padding: 0.4rem 0.8rem;
-    }
-}
-
-/* Crypto donation */
 .crypto-section {
-    background: #f0f4f8;
-    padding: 3rem 1rem;
-    border-radius: 12px;
+    padding: 6rem 1rem;
     text-align: center;
+}
+
+.crypto-section h2 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.crypto-section p {
+    color: var(--muted);
+    margin-bottom: 4rem;
 }
 
 .crypto-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    max-width: 700px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    max-width: 1100px;
     margin: auto;
 }
 
 .crypto-item {
     display: flex;
     align-items: center;
-    background: white;
-    padding: 0.7rem 1rem;
-    border-radius: 8px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
     cursor: pointer;
-    gap: 0.6rem;
-    min-width: 220px;
-    transition: 0.2s ease;
+    transition: 0.25s ease;
 }
 
 .crypto-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    border-color: var(--gold);
 }
 
 .crypto-icon {
-    width: 28px;
-    height: 28px;
+    width: 36px;
 }
 
 .crypto-item code {
+    font-family: monospace;
     font-size: 0.85rem;
-    overflow-x: auto;
-    white-space: nowrap;
+    color: var(--muted);
+    word-break: break-word;
 }
 
-@media (max-width: 500px) {
-    .crypto-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
+/* =========================
+   Footer
+========================= */
 
 footer {
+    padding: 4rem 1rem;
     text-align: center;
-    padding: 2rem;
-    background: white;
-    color: var(--gray);
-    font-size: 0.9rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.95rem;
 }
 
-@media (max-width: 600px) {
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 768px) {
     header h1 {
+        font-size: 3rem;
+    }
+
+    .hero h2,
+    .features-section h2,
+    .screenshots-section h2,
+    .crypto-section h2 {
         font-size: 2rem;
     }
 }
