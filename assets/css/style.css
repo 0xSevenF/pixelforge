@@ -1,0 +1,227 @@
+:root {
+    --primary: #5b8cff;
+    --dark: #111827;
+    --light: #f9fafb;
+    --gray: #6b7280;
+}
+
+/* Reset & base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    padding: 2rem;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+header p {
+    color: var(--gray);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.download-buttons {
+    margin-top: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.9rem 1.8rem;
+    margin: 0.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.btn-outline {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Sections */
+section {
+    padding: 4rem 1rem;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Features */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.feature h3 {
+    margin-bottom: 1rem;
+}
+
+/* Screenshots */
+.screenshots-section {
+    padding: 4rem 1rem;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.screenshots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.screenshot-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.screenshot-item img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.screenshot-item:hover img {
+    transform: scale(1.05);
+}
+
+.screenshot-item .caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 0.85rem;
+    text-align: center;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    transition: background 0.3s ease;
+}
+
+.screenshot-item:hover .caption {
+    background: rgba(0,0,0,0.7);
+}
+
+@media (max-width: 500px) {
+    .screenshot-item .caption {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Crypto donation */
+.crypto-section {
+    background: #f0f4f8;
+    padding: 3rem 1rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.crypto-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 700px;
+    margin: auto;
+}
+
+.crypto-item {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    cursor: pointer;
+    gap: 0.6rem;
+    min-width: 220px;
+    transition: 0.2s ease;
+}
+
+.crypto-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.crypto-icon {
+    width: 28px;
+    height: 28px;
+}
+
+.crypto-item code {
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+@media (max-width: 500px) {
+    .crypto-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+}
