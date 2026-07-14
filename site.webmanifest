@@ -3,8 +3,8 @@
   "short_name": "Wena",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f9fafb",
-  "theme_color": "#5b8cff",
+  "background_color": "#FAFAFA",
+  "theme_color": "#FAFAFA",
   "icons": [
     {
       "src": "/assets/icons/android-chrome-192x192.png",

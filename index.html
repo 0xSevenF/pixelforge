@@ -1,642 +1,535 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <title>Wena - Professional Photo Editor</title>
+    <title>Wena — Professional Image Processing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO -->
-    <meta name="description" content="Wena is a professional photo editing application with RAW support, advanced color grading and film and negative colorizing.">
-    <meta name="keywords" content="Wena, photo editor, RAW editor, Lightroom alternative, Linux photo editor, Windows photo editor, MacOS photo editor">
+    <meta name="description" content="Wena is professional image processing software for photographers who care about every detail. Develop RAW images, refine colors, and build your creative workflow.">
+    <meta name="keywords" content="Wena, photo editor, RAW editor, image processing, color grading, professional photography">
     <meta name="author" content="Hazhir Ahmadzadeh (0x7F)">
+    <meta name="theme-color" content="#FAFAFA">
 
-    <!-- Theme color -->
-    <meta name="theme-color" content="#1d4ed8">
-
-    <!-- Favicon -->
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Wena - Professional Photo Editor">
-    <meta property="og:description" content="Powerful, fast and modern photo editing software for Windows and Linux.">
+    <meta property="og:title" content="Wena — Professional Image Processing">
+    <meta property="og:description" content="Professional image processing for photographers who care about every detail.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://wena.xkx.at/pixelforge/assets/screenshots/screen1.png">
-    <meta property="og:url" content="https://wena.xkx.at/pixelforge/">
+    <meta property="og:image" content="https://wena.xkx.at/assets/screenshots/preview.png">
+    <meta property="og:url" content="https://wena.xkx.at/">
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Wena - Professional Photo Editor">
-    <meta name="twitter:description" content="Professional photo editing made simple.">
-    <meta name="twitter:image" content="https://wena.xkx.at/pixelforge/assets/screenshots/screen1.png">
+    <meta name="twitter:title" content="Wena — Professional Image Processing">
+    <meta name="twitter:description" content="Develop RAW images, refine colors, and build your creative workflow.">
+    <meta name="twitter:image" content="https://wena.xkx.at/assets/screenshots/preview.png">
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/css/style.css">
-
-    <style>
-
-    </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════
-     LINUX DOWNLOAD MODAL
-══════════════════════════════════════════ -->
-<div class="linux-modal-backdrop" id="linuxModal" role="dialog" aria-modal="true" aria-labelledby="linuxModalTitle">
-    <div class="linux-modal">
-        <!-- Close button -->
-        <button class="linux-modal-close" id="linuxModalClose" aria-label="Close">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<!-- Linux Download Modal -->
+<div class="modal-backdrop" id="linuxModal" role="dialog" aria-modal="true" aria-labelledby="linuxModalTitle">
+    <div class="modal">
+        <button class="modal-close" id="linuxModalClose" aria-label="Close">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
         </button>
-
-        <!-- Header -->
-        <div class="linux-modal-header">
-            <svg width="26" height="26" viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50 2.5C23.8 2.5 2.5 23.8 2.5 50c0 20.7 13.3 38.4 31.9 44.9l6.4-17.5C29.2 73.6 22.5 62.6 22.5 50c0-15.2 12.3-27.5 27.5-27.5S77.5 34.8 77.5 50c0 12.6-6.7 23.6-17.3 27.4l6.4 17.5C85.2 88.4 97.5 70.7 97.5 50 97.5 23.8 76.2 2.5 50 2.5z"/>
-                <circle cx="50" cy="50" r="13"/>
-            </svg>
-            <h2 class="linux-modal-title" id="linuxModalTitle">Download for Linux</h2>
-        </div>
-        <p class="linux-modal-sub">Choose the package format that works best for your system.</p>
-
-        <div class="linux-options">
-
-            <!-- AppImage — recommended -->
-            <a
-                    class="linux-option recommended"
-                    href="https://github.com/0xSevenF/pixelforge/releases/download/v1.0-beta/wena_1.0_beta_x86_64.AppImage"
-                    download
-            >
-                <div class="linux-option-icon">
-                    <!-- Box / package icon -->
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                        <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                        <line x1="12" y1="22.08" x2="12" y2="12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    </svg>
-                </div>
-                <div class="linux-option-body">
-                    <div class="linux-option-title-row">
-                        <span class="linux-option-name">AppImage</span>
-                        <span class="rec-badge">✦ Recommended</span>
+        <h2 class="modal-title" id="linuxModalTitle">Download for Linux</h2>
+        <p class="modal-sub">Choose the package format that works best for your system.</p>
+        <div class="modal-options">
+            <a class="modal-option recommended" href="https://github.com/0xSevenF/pixelforge/releases/download/v1.0-beta/wena_1.0_beta_x86_64.AppImage" download>
+                <div class="modal-option-body">
+                    <div class="modal-option-name">
+                        AppImage
+                        <span class="modal-badge">Recommended</span>
                     </div>
-                    <span class="linux-option-desc">Universal • No installation needed • Works on any distro, any version</span>
+                    <div class="modal-option-desc">Universal · No installation · Works on any distro</div>
                 </div>
-                <svg class="linux-option-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
             </a>
-
-            <!-- .deb -->
-            <a
-                    class="linux-option"
-                    href="https://github.com/0xSevenF/pixelforge/releases/download/v1.0-beta/wena_1.0_beta_amd64.deb"
-                    download
-            >
-                <div class="linux-option-icon">
-                    <!-- Debian logo–ish icon -->
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    </svg>
+            <a class="modal-option" href="https://github.com/0xSevenF/pixelforge/releases/download/v1.0-beta/wena_1.0_beta_amd64.deb" download>
+                <div class="modal-option-body">
+                    <div class="modal-option-name">.deb Package</div>
+                    <div class="modal-option-desc">For Debian, Ubuntu, and derivatives</div>
                 </div>
-                <div class="linux-option-body">
-                    <div class="linux-option-title-row">
-                        <span class="linux-option-name">.deb Package</span>
-                    </div>
-                    <span class="linux-option-desc">For Debian, Ubuntu, and Ubuntu-based distros</span>
-                </div>
-                <svg class="linux-option-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
             </a>
-
         </div>
-
-        <p class="linux-modal-footer">Ubuntu 25.10+ &nbsp;•&nbsp; amd64 &nbsp;•&nbsp; Free &amp; Open Beta</p>
+        <p class="modal-footer">Ubuntu 25.10+ · amd64 · Open Beta</p>
     </div>
 </div>
 
-
-<!-- Navigation -->
-<nav class="nav">
-    <div class="nav-container">
-        <div class="nav-logo">
-            <img src="assets/icons/wena-white.svg" alt="Wena Logo" class="logo-icon">
-            <span class="logo-text">Wena<span class="beta-badge">BETA</span></span>
-        </div>
-        <div class="nav-links">
-            <a href="#features">Features</a>
-            <a href="#screenshots">Gallery</a>
-            <a href="#download" class="nav-cta">Download</a>
-        </div>
-    </div>
+<!-- Mobile Menu -->
+<nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="#features">Features</a>
+    <a href="#workflow">Workflow</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#technology">Technology</a>
+    <a href="#download">Download</a>
 </nav>
 
-<!-- Hero Section -->
-<section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-        <div class="hero-badge fade-in-up">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M8 2L10 6L14 7L11 10L12 14L8 12L4 14L5 10L2 7L6 6L8 2Z" fill="currentColor"/>
-            </svg>
-            Professional Grade Photo Editing
-        </div>
-        <h1 class="hero-title fade-in-up">
-            Transform Your<br>
-            <span class="gradient-text">Creative Vision</span>
-        </h1>
-        <p class="hero-subtitle fade-in-up">
-            Experience the power of professional photo editing with RAW support,
-            advanced color grading, and lightning-fast performance. Built for creators
-            who demand excellence.
-        </p>
-        <div class="hero-buttons fade-in-up">
-            <a href="https://github.com/0xSevenF/pixelforge/releases/download/v1.0-beta/wena-1.0-beta-win64.exe" class="btn btn-primary">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M10 2V14M10 14L6 10M10 14L14 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M3 16H17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<!-- Navigation -->
+<header class="nav" role="banner">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo" aria-label="Wena home">
+            <img src="assets/icons/wena-black.svg" alt="" width="28" height="28">
+            Wena<span class="beta">Beta</span>
+        </a>
+
+        <nav class="nav-center" aria-label="Primary">
+            <a href="#features">Features</a>
+            <a href="#workflow">Workflow</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#technology">Technology</a>
+            <a href="#download">Download</a>
+        </nav>
+
+        <div class="nav-right">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <svg class="icon-moon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M14 9.2A6.5 6.5 0 0 1 6.8 2 6.5 6.5 0 1 0 14 9.2Z" stroke="currentColor" stroke-width="1.2"/>
                 </svg>
-                Download for Windows
-            </a>
-            <!-- Linux button now opens modal -->
-            <button class="btn btn-secondary" id="openLinuxModal" type="button">
-                Download for Linux
+                <svg class="icon-sun" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.2"/>
+                    <path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3.05 3.05l1.06 1.06M11.89 11.89l1.06 1.06M3.05 12.95l1.06-1.06M11.89 4.11l1.06-1.06" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
             </button>
-            <a href="#" class="btn btn-secondary btn-disabled">
-                MacOS (Coming Soon)
-            </a>
-        </div>
-        <div class="hero-stats fade-in-up">
-            <div class="stat">
-                <div class="stat-value">32-bit</div>
-                <div class="stat-label">Float Precision</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">RAW</div>
-                <div class="stat-label">Format Support</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">Cross-Platform</div>
-                <div class="stat-label">Win • Linux • macOS*</div>
-            </div>
+            <a href="#download" class="nav-download">Download</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+            </button>
         </div>
     </div>
-    <div class="hero-image fade-in">
-        <img src="assets/screenshots/screen1.png" alt="Wena Interface" class="hero-screenshot">
-        <div class="hero-glow"></div>
-    </div>
-</section>
+</header>
 
-<!-- Beta Notice -->
-<section class="beta-notice">
-    <div class="container">
-        <div class="notice-content">
-            <svg class="notice-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                <path d="M12 8V12M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            <div class="notice-text">
-                <strong>Beta Release:</strong> Wena is currently in beta testing. We're actively improving the application and would greatly appreciate your feedback.
-                <a href="https://github.com/0xSevenF/pixelforge/issues" target="_blank">Report issues</a> or email
-                <span id="contact-email"></span>
+<main>
+    <!-- Hero -->
+    <section class="hero" aria-label="Introduction">
+        <div class="hero-media hero-carousel" aria-hidden="true">
+            <img class="hero-slide hero-slide--mobile is-active" src="assets/carousel/1.jpg" alt="" width="2400" height="1600" fetchpriority="high">
+            <img class="hero-slide hero-slide--mobile" src="assets/carousel/4.jpg" alt="" width="2400" height="1600" loading="lazy">
+            <img class="hero-slide hero-slide--mobile" src="assets/carousel/6.jpg" alt="" width="2400" height="1600" loading="lazy">
+            <img class="hero-slide hero-slide--desktop is-active" src="assets/carousel/2.jpg" alt="" width="2400" height="1600" loading="lazy">
+            <img class="hero-slide hero-slide--desktop" src="assets/carousel/5.jpg" alt="" width="2400" height="1600" loading="lazy">
+            <img class="hero-slide hero-slide--desktop" src="assets/carousel/7.jpg" alt="" width="2400" height="1600" loading="lazy">
+        </div>
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-grain" aria-hidden="true"></div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">Wena</h1>
+            <p class="hero-subtitle">Professional image processing for photographers who care about every detail.</p>
+            <p class="hero-desc">Develop RAW images, refine colors, and build your own creative workflow with precision tools designed for modern photography.</p>
+            <div class="hero-actions">
+                <a href="#download" class="btn btn-primary">Download Wena</a>
+                <a href="#features" class="btn btn-ghost">Explore Features</a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Features Section -->
-<section id="features" class="features">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">Powerful Features for Professionals</h2>
-            <p class="section-subtitle">Everything you need to bring your creative vision to life</p>
+    <!-- Beta Notice -->
+    <aside class="beta-notice">
+        <div class="container">
+            <p><strong>Beta release.</strong> Wena is in active development. Your feedback shapes the product.
+                <a href="https://github.com/0xSevenF/pixelforge/issues" target="_blank" rel="noopener">Report issues</a>
+                or <a href="#" id="contact-email" class="contact-link">email us</a></p>
         </div>
+    </aside>
 
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
-                        <path d="M3 9H21M9 3V21" stroke="currentColor" stroke-width="2"/>
-                    </svg>
+    <!-- Product Showcase -->
+    <section id="workflow" class="showcase">
+        <div class="container">
+            <header class="showcase-header reveal">
+                <p class="section-label">Workflow</p>
+                <h2 class="section-heading">Your images. Your process.</h2>
+                <p class="section-lead">A pipeline-based editing environment built for serious photographers — from RAW development through final export.</p>
+            </header>
+
+            <div class="showcase-app reveal">
+                <div class="showcase-frame">
+                    <img
+                        src="assets/screenshots/preview.png"
+                        alt="Wena preview workspace with film strip browser"
+                        width="1920"
+                        height="1080"
+                        loading="lazy"
+                    >
                 </div>
-                <h3>Non-Destructive Editing</h3>
-                <p>Edit your photos without permanently changing the original files. Every adjustment is reversible.</p>
             </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <h3>Game-Engine Performance</h3>
-                <p>Syncs to your monitor's refresh rate for buttery-smooth, glitch-free editing experience.</p>
-            </div>
+            <div class="screenshot-features">
+                <article class="screenshot-feature reveal">
+                    <div class="screenshot-feature-header">
+                        <span>Develop</span>
+                        <span>Tool stack</span>
+                    </div>
+                    <div class="screenshot-feature-media">
+                        <img src="assets/screenshots/screen2.png" alt="Wena develop mode with sharpening and editing tools" loading="lazy">
+                    </div>
+                    <p class="screenshot-feature-caption">Stack sharpening, curves, and output tools in a non-destructive develop workflow.</p>
+                </article>
 
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <rect x="2" y="2" width="20" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
-                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                </div>
-                <h3>Modern UI/UX</h3>
-                <p>Clean interface that starts fresh every time. Add tools as needed for each unique edit.</p>
-            </div>
+                <article class="screenshot-feature reveal">
+                    <div class="screenshot-feature-header">
+                        <span>Tone</span>
+                        <span>Curves &amp; borders</span>
+                    </div>
+                    <div class="screenshot-feature-media">
+                        <img src="assets/screenshots/tone-curve-passpartout.png" alt="Wena tone curve and passepartout tools with histogram" loading="lazy">
+                    </div>
+                    <p class="screenshot-feature-caption">Refine contrast with a precision tone curve, histogram feedback, and passepartout framing controls.</p>
+                </article>
 
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M3 12C3 12 5.5 7 12 7S21 12 21 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M3 12C3 12 5.5 17 12 17S21 12 21 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <circle cx="12" cy="12" r="2" fill="currentColor"/>
-                    </svg>
-                </div>
-                <h3>Advanced Color Grading</h3>
-                <p>Professional tools including curves, tone mapping, and high-precision histograms.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
-                        <path d="M12 9V2M12 22V15M9 12H2M22 12H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M16 8L19 5M5 19L8 16M8 8L5 5M19 19L16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </div>
-                <h3>Instant RAW Preview</h3>
-                <p>Lightning-fast embedded preview extraction lets you browse thousands of RAW files instantly without waiting for full processing.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <rect x="8" y="2" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
-                        <rect x="3" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
-                        <path d="M13 9L16 12L13 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <h3>One-Click Pipeline Copy</h3>
-                <p>Perfect your edit once, then instantly apply the same settings to other images. Maintain consistency across entire photo series effortlessly.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <rect x="2" y="6" width="20" height="12" rx="2" stroke="currentColor" stroke-width="2"/>
-                        <path d="M6 6V2M18 6V2M6 18V22M18 18V22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </div>
-                <h3>Universal Hardware Support</h3>
-                <p>Optimized for high-end PCs and older hardware—adapts to your system's capabilities.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M21 15V19C21 20.1 20.1 21 19 21H5C3.9 21 3 20.1 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </div>
-                <h3>Lightning-Fast Export</h3>
-                <p>Bulk export hundreds of photos with optimized performance and minimal wait time.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
-                        <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
-                        <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
-                        <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                </div>
-                <h3>Film Negative Colorizing</h3>
-                <p>Built-in high-precision tools to colorize vintage film and negative photos with one click.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <h3>Universal Format Support</h3>
-                <p>Import RAW, TIFF, JPEG, HEIC, and HEIF from all modern cameras with full precision.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <h3>32-Bit Float Precision</h3>
-                <p>All calculations performed in 32-bit floating point for maximum color accuracy.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                        <path d="M12 2C14.5 4.5 16 7.5 16 12C16 16.5 14.5 19.5 12 22" stroke="currentColor" stroke-width="2"/>
-                        <path d="M12 2C9.5 4.5 8 7.5 8 12C8 16.5 9.5 19.5 12 22" stroke="currentColor" stroke-width="2"/>
-                        <path d="M2 12H22" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                </div>
-                <h3>Cross-Platform</h3>
-                <p>Available for Windows, GNU/Linux, and macOS (coming soon).</p>
+                <article class="screenshot-feature reveal">
+                    <div class="screenshot-feature-header">
+                        <span>Grayscale</span>
+                        <span>Channel mixer</span>
+                    </div>
+                    <div class="screenshot-feature-media">
+                        <img src="assets/screenshots/black-and-white-filter.png" alt="Wena grayscale filter with channel mixer and tone curve" loading="lazy">
+                    </div>
+                    <p class="screenshot-feature-caption">Convert to black and white with a channel mixer, tonal presets, and non-destructive intensity control.</p>
+                </article>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Screenshots Gallery -->
-<section id="screenshots" class="gallery">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">See Wena in Action</h2>
-            <p class="section-subtitle">Professional workspace designed for your creative workflow</p>
+    <!-- Features -->
+    <section id="features" class="features">
+        <div class="container">
+            <header class="reveal" style="margin-bottom: 0;">
+                <p class="section-label">Capabilities</p>
+                <h2 class="section-heading">Tools for the craft.</h2>
+            </header>
+
+            <div class="features-editorial">
+                <article class="feature-block">
+                    <div class="feature-text">
+                        <p class="feature-number">01</p>
+                        <h3 class="feature-title">RAW Development</h3>
+                        <p class="feature-tagline">"Extract the full potential of your images."</p>
+                        <p class="feature-desc">Develop sensor data with precision. Wena preserves every bit of information from your camera's RAW files through a non-destructive pipeline.</p>
+                        <ul class="feature-list">
+                            <li>Full RAW processing with camera profiles</li>
+                            <li>High-precision, non-destructive editing</li>
+                            <li>Instant embedded preview extraction</li>
+                            <li>32-bit float calculations throughout</li>
+                        </ul>
+                    </div>
+                    <div class="feature-visual feature-visual--app">
+                        <img src="assets/screenshots/preview.png" alt="Wena preview workspace with film strip browser" loading="lazy">
+                    </div>
+                </article>
+
+                <article class="feature-block">
+                    <div class="feature-text">
+                        <p class="feature-number">02</p>
+                        <h3 class="feature-title">Advanced Image Pipeline</h3>
+                        <p class="feature-tagline">"Build your own creative process."</p>
+                        <p class="feature-desc">A node-based editing workflow that adapts to how you work. Chain processing steps, save presets, and apply consistent looks across entire shoots.</p>
+                        <ul class="feature-list">
+                            <li>Node-based editing workflow</li>
+                            <li>Custom processing chains</li>
+                            <li>One-click pipeline copy across images</li>
+                            <li>Reusable tools and presets</li>
+                        </ul>
+                    </div>
+                    <div class="feature-visual feature-visual--app">
+                        <img src="assets/screenshots/advance-image-pipeline.png" alt="Wena advanced image pipeline with stacked editing tools" loading="lazy">
+                    </div>
+                </article>
+
+                <article class="feature-block">
+                    <div class="feature-text">
+                        <p class="feature-number">03</p>
+                        <h3 class="feature-title">Professional Color Workflow</h3>
+                        <p class="feature-tagline">"Designed for photographers who understand color."</p>
+                        <p class="feature-desc">Accurate color handling built on professional color science. Curves, tone mapping, histograms, and film-inspired workflows for photographers who take color seriously.</p>
+                        <ul class="feature-list">
+                            <li>Accurate color science and handling</li>
+                            <li>Advanced curves and tone mapping</li>
+                            <li>Film negative colorizing tools</li>
+                            <li>High-precision histogram analysis</li>
+                        </ul>
+                    </div>
+                    <div class="feature-visual feature-visual--app">
+                        <img src="assets/screenshots/professional-color-flow.png" alt="Wena professional color workflow with curves and histogram" loading="lazy">
+                    </div>
+                </article>
+
+                <article class="feature-block">
+                    <div class="feature-text">
+                        <p class="feature-number">04</p>
+                        <h3 class="feature-title">Performance</h3>
+                        <p class="feature-tagline">"Fast enough for modern photography."</p>
+                        <p class="feature-desc">Engineered in C++ with GPU acceleration. Handle large files, bulk exports, and demanding workflows without compromising responsiveness.</p>
+                        <ul class="feature-list">
+                            <li>GPU-accelerated processing</li>
+                            <li>Efficient memory management</li>
+                            <li>Large image and batch support</li>
+                            <li>Display-synced rendering</li>
+                        </ul>
+                    </div>
+                    <div class="feature-visual feature-visual--app">
+                        <img src="assets/screenshots/performance.png" alt="Wena editing workspace with sharpening, tone curve, and passepartout tools" loading="lazy">
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <header class="reveal">
+                <p class="section-label">Workflow</p>
+                <h2 class="section-heading">See Wena in action.</h2>
+                <p class="section-lead">Screen recordings of real editing workflows.</p>
+            </header>
         </div>
 
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="assets/screenshots/pipelinecopy.gif" alt="Edit Workspace">
-                <div class="gallery-overlay">
-                    <div class="gallery-label">Edit Workspace</div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="assets/screenshots/filmcolorize2.gif" alt="Color Grading Tools">
-                <div class="gallery-overlay">
-                    <div class="gallery-label">Color Grading Tools</div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="assets/screenshots/grayscale.gif" alt="RAW Editing">
-                <div class="gallery-overlay">
-                    <div class="gallery-label">RAW Editing</div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="assets/screenshots/screen3.png" alt="GPU Acceleration">
-                <div class="gallery-overlay">
-                    <div class="gallery-label">Fast preview mode of raw files</div>
-                </div>
+        <div class="container">
+            <div class="gallery-museum">
+                <figure class="gallery-piece reveal">
+                    <div class="gallery-piece-header">
+                        <span class="gallery-piece-type">Recording</span>
+                        <span class="gallery-piece-title">Pipeline Copy</span>
+                    </div>
+                    <div class="gallery-piece-media">
+                        <img src="assets/screenshots/pipelinecopy.gif" alt="Pipeline copy workflow recording" loading="lazy">
+                    </div>
+                    <figcaption class="gallery-piece-caption">Copy a complete processing pipeline to another image</figcaption>
+                </figure>
+
+                <figure class="gallery-piece reveal">
+                    <div class="gallery-piece-header">
+                        <span class="gallery-piece-type">Recording</span>
+                        <span class="gallery-piece-title">Film Colorizing</span>
+                    </div>
+                    <div class="gallery-piece-media">
+                        <img src="assets/screenshots/filmcolorize2.gif" alt="Film colorizing workflow recording" loading="lazy">
+                    </div>
+                    <figcaption class="gallery-piece-caption">Colorize film negatives and scans</figcaption>
+                </figure>
+
+                <figure class="gallery-piece reveal">
+                    <div class="gallery-piece-header">
+                        <span class="gallery-piece-type">Recording</span>
+                        <span class="gallery-piece-title">Grayscale</span>
+                    </div>
+                    <div class="gallery-piece-media">
+                        <img src="assets/screenshots/grayscale.gif" alt="Grayscale conversion workflow recording" loading="lazy">
+                    </div>
+                    <figcaption class="gallery-piece-caption">Non-destructive tone conversion</figcaption>
+                </figure>
+
+                <figure class="gallery-piece reveal">
+                    <div class="gallery-piece-header">
+                        <span class="gallery-piece-type">Recording</span>
+                        <span class="gallery-piece-title">Passepartout</span>
+                    </div>
+                    <div class="gallery-piece-media">
+                        <img src="assets/screenshots/paspartout.gif" alt="Passepartout border workflow recording" loading="lazy">
+                    </div>
+                    <figcaption class="gallery-piece-caption">Adjustable border framing</figcaption>
+                </figure>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Download Section -->
-<section id="download" class="download-section">
-    <div class="container">
-        <div class="download-content">
-            <h2>Ready to Transform Your Workflow?</h2>
-            <p>Download Wena today and experience professional photo editing reimagined.</p>
-            <div class="download-buttons">
-                <a href="https://github.com/0xSevenF/pixelforge/releases/download/v1.0-beta/wena-1.0-beta-win64.exe" class="btn btn-primary btn-large">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M10 2V14M10 14L6 10M10 14L14 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M3 16H17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                    Download for Windows
-                </a>
-                <!-- Linux button opens modal in download section too -->
-                <button class="btn btn-secondary btn-large" id="openLinuxModalBottom" type="button">
-                    Download for Linux
-                </button>
+    <!-- Technology -->
+    <section id="technology" class="technology">
+        <div class="container">
+            <header class="reveal">
+                <p class="section-label">Engineering</p>
+                <h2 class="section-heading">Built for precision.</h2>
+                <p class="section-lead">Serious software for serious work. No compromises in the foundation.</p>
+            </header>
+
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h3>C++ Core</h3>
+                    <p>Native performance with carefully optimized image processing algorithms. Every calculation in 32-bit floating point.</p>
+                </div>
+                <div class="tech-item">
+                    <h3>GPU Acceleration</h3>
+                    <p>Hardware-accelerated rendering and processing. Display-synced preview for fluid, responsive editing.</p>
+                </div>
+                <div class="tech-item">
+                    <h3>RAW Processing</h3>
+                    <p>Full sensor data development with embedded preview extraction. Browse thousands of files without waiting.</p>
+                </div>
+                <div class="tech-item">
+                    <h3>Professional Workflows</h3>
+                    <p>Non-destructive pipeline editing, batch export, and one-click settings transfer across image series.</p>
+                </div>
+                <div class="tech-item">
+                    <h3>Cross-Platform</h3>
+                    <p>Windows and Linux today. macOS in development. One workflow, wherever you work.</p>
+                </div>
+                <div class="tech-item">
+                    <h3>Format Support</h3>
+                    <p>RAW, TIFF, JPEG, HEIC, and HEIF from all modern cameras. Universal import with full precision.</p>
+                </div>
             </div>
-            <p class="download-note">Free • Open Beta • Windows • GNU/Linux • macOS*</p>
-        </div>
-    </div>
-</section>
 
-<!-- Support Section -->
-<section class="support-section">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">Support Development</h2>
-            <p class="section-subtitle">Help us build the future of photo editing</p>
+            <div class="tech-specs reveal">
+                <div class="tech-spec"><strong>32-bit</strong>Float precision</div>
+                <div class="tech-spec"><strong>RAW</strong>Native development</div>
+                <div class="tech-spec"><strong>GPU</strong>Accelerated pipeline</div>
+                <div class="tech-spec"><strong>3</strong>Platforms supported</div>
+            </div>
         </div>
+    </section>
 
-        <div class="crypto-grid">
-            <div class="crypto-card" data-address="bc1qafwz7u87u5am2grvmej3u5qe03j8yev3zukmr8">
-                <img src="assets/crypto/btc.png" alt="Bitcoin" class="crypto-icon">
-                <div class="crypto-info">
-                    <div class="crypto-name">Bitcoin</div>
+    <!-- Community -->
+    <section id="community" class="community">
+        <div class="container">
+            <header class="reveal">
+                <p class="section-label">Community</p>
+                <h2 class="section-heading">Made for photographers.</h2>
+                <p class="section-lead">Learn workflows, share work, and shape the future of the tool.</p>
+            </header>
+
+            <div class="community-grid">
+                <article class="community-card">
+                    <p class="community-type">Workflow</p>
+                    <h3>Portrait series consistency</h3>
+                    <p>Develop a look once on your lead image, then transfer the entire processing pipeline to an entire shoot in one click.</p>
+                    <a href="#workflow" class="community-link">View workflow</a>
+                </article>
+
+                <article class="community-card">
+                    <p class="community-type">Tutorial</p>
+                    <h3>RAW to print preparation</h3>
+                    <p>From sensor data to export-ready files. A complete guide to non-destructive development and color-managed output.</p>
+                    <a href="https://github.com/0xSevenF/pixelforge" target="_blank" rel="noopener" class="community-link">Read on GitHub</a>
+                </article>
+
+                <article class="community-card">
+                    <p class="community-type">Showcase</p>
+                    <h3>Film negative colorizing</h3>
+                    <p>Tools for colorizing vintage film and negative scans. See the workflow recording in the gallery.</p>
+                    <a href="#gallery" class="community-link">See gallery</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download -->
+    <section id="download" class="download">
+        <div class="container">
+            <h2 class="download-title reveal">Create images without compromise.</h2>
+            <div class="download-actions reveal">
+                <a href="https://github.com/0xSevenF/pixelforge/releases/download/v1.0-beta/wena-1.0-beta-win64.exe" class="btn btn-primary btn-large">Download for Windows</a>
+                <button class="btn btn-secondary btn-large" data-linux-modal type="button">Download for Linux</button>
+                <span class="btn btn-secondary btn-large btn-disabled">Download for macOS</span>
+            </div>
+            <p class="download-note reveal">Free · Open Beta · Windows · GNU/Linux · macOS coming soon</p>
+            <p class="download-note reveal" style="margin-top: 1rem;">
+                <a href="https://t.me/wena_xkx_at" target="_blank" rel="noopener" class="community-link">Join the Community</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Support -->
+    <section class="support">
+        <div class="container">
+            <header class="support-header reveal">
+                <p class="section-label">Support</p>
+                <h2 class="section-heading" style="font-size: clamp(1.5rem, 3vw, 2rem);">Help fund development.</h2>
+            </header>
+
+            <div class="crypto-list reveal">
+                <div class="crypto-item" data-address="bc1qafwz7u87u5am2grvmej3u5qe03j8yev3zukmr8" role="button" tabindex="0" aria-label="Copy Bitcoin address">
+                    <img src="assets/crypto/btc.png" alt="" class="crypto-icon" width="32" height="32">
+                    <span class="crypto-name">Bitcoin</span>
                     <code class="crypto-address">bc1qafwz7u87u5am2grvmej3u5qe03j8yev3zukmr8</code>
+                    <span class="crypto-copy-hint">Copy</span>
                 </div>
-                <div class="crypto-copy">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <rect x="5" y="5" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M3 11V3H11" stroke="currentColor" stroke-width="1.5"/>
-                    </svg>
-                </div>
-            </div>
-
-            <div class="crypto-card" data-address="TRhJMa8sxSxf7mwFpEoQBQ9YSPvrrNwpoJ">
-                <img src="assets/crypto/tron.png" alt="Tron" class="crypto-icon">
-                <div class="crypto-info">
-                    <div class="crypto-name">Tron</div>
+                <div class="crypto-item" data-address="TRhJMa8sxSxf7mwFpEoQBQ9YSPvrrNwpoJ" role="button" tabindex="0" aria-label="Copy Tron address">
+                    <img src="assets/crypto/tron.png" alt="" class="crypto-icon" width="32" height="32">
+                    <span class="crypto-name">Tron</span>
                     <code class="crypto-address">TRhJMa8sxSxf7mwFpEoQBQ9YSPvrrNwpoJ</code>
+                    <span class="crypto-copy-hint">Copy</span>
                 </div>
-                <div class="crypto-copy">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <rect x="5" y="5" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M3 11V3H11" stroke="currentColor" stroke-width="1.5"/>
-                    </svg>
-                </div>
-            </div>
-
-            <div class="crypto-card" data-address="0x1130a6ED596d24060F1CB60e96B3E7Ecf2AB1F19">
-                <img src="assets/crypto/ethereum.png" alt="Ethereum" class="crypto-icon">
-                <div class="crypto-info">
-                    <div class="crypto-name">Ethereum</div>
+                <div class="crypto-item" data-address="0x1130a6ED596d24060F1CB60e96B3E7Ecf2AB1F19" role="button" tabindex="0" aria-label="Copy Ethereum address">
+                    <img src="assets/crypto/ethereum.png" alt="" class="crypto-icon" width="32" height="32">
+                    <span class="crypto-name">Ethereum</span>
                     <code class="crypto-address">0x1130a6ED596d24060F1CB60e96B3E7Ecf2AB1F19</code>
+                    <span class="crypto-copy-hint">Copy</span>
                 </div>
-                <div class="crypto-copy">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <rect x="5" y="5" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M3 11V3H11" stroke="currentColor" stroke-width="1.5"/>
-                    </svg>
-                </div>
-            </div>
-
-            <div class="crypto-card" data-address="0x1130a6ED596d24060F1CB60e96B3E7Ecf2AB1F19">
-                <img src="assets/crypto/tether.png" alt="Tether" class="crypto-icon">
-                <div class="crypto-info">
-                    <div class="crypto-name">Tether (USDT)</div>
+                <div class="crypto-item" data-address="0x1130a6ED596d24060F1CB60e96B3E7Ecf2AB1F19" role="button" tabindex="0" aria-label="Copy Tether address">
+                    <img src="assets/crypto/tether.png" alt="" class="crypto-icon" width="32" height="32">
+                    <span class="crypto-name">Tether</span>
                     <code class="crypto-address">0x1130a6ED596d24060F1CB60e96B3E7Ecf2AB1F19</code>
+                    <span class="crypto-copy-hint">Copy</span>
                 </div>
-                <div class="crypto-copy">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <rect x="5" y="5" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M3 11V3H11" stroke="currentColor" stroke-width="1.5"/>
-                    </svg>
-                </div>
-            </div>
-
-            <div class="crypto-card" data-address="addr1qyyjtwf2efdxmlf2850fzpa89tq28tkjm4cae2g3yt8q2lct7mapd38ve9m2d9vcsnlhgevlv6ez4y5xzv9sufkzkycs4k8z79">
-                <img src="assets/crypto/cardano.png" alt="Cardano" class="crypto-icon">
-                <div class="crypto-info">
-                    <div class="crypto-name">Cardano</div>
+                <div class="crypto-item" data-address="addr1qyyjtwf2efdxmlf2850fzpa89tq28tkjm4cae2g3yt8q2lct7mapd38ve9m2d9vcsnlhgevlv6ez4y5xzv9sufkzkycs4k8z79" role="button" tabindex="0" aria-label="Copy Cardano address">
+                    <img src="assets/crypto/cardano.png" alt="" class="crypto-icon" width="32" height="32">
+                    <span class="crypto-name">Cardano</span>
                     <code class="crypto-address">addr1qyyjtwf2efdxmlf2850fzpa89tq28tkjm4cae2g3yt8q2lct7mapd38ve9m2d9vcsnlhgevlv6ez4y5xzv9sufkzkycs4k8z79</code>
-                </div>
-                <div class="crypto-copy">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <rect x="5" y="5" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M3 11V3H11" stroke="currentColor" stroke-width="1.5"/>
-                    </svg>
+                    <span class="crypto-copy-hint">Copy</span>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</main>
 
 <!-- Footer -->
 <footer class="footer">
     <div class="container">
-        <div class="footer-content">
+        <div class="footer-inner">
             <div class="footer-brand">
-                <div class="footer-logo">
-                    <img src="assets/icons/wena-white.svg" alt="Wena Logo" class="logo-icon">
-                    <span>Wena</span>
-                </div>
-                <p class="footer-tagline">Professional photo editing reimagined</p>
+                <a href="#" class="nav-logo">
+                    <img src="assets/icons/wena-black.svg" alt="" width="28" height="28" class="footer-logo-img">
+                    Wena
+                </a>
+                <p>Professional image processing for photographers who care about every detail.</p>
             </div>
-
             <div class="footer-links">
-                <div class="footer-column">
+                <div class="footer-col">
                     <h4>Product</h4>
                     <a href="#features">Features</a>
-                    <a href="#screenshots">Screenshots</a>
+                    <a href="#workflow">Workflow</a>
+                    <a href="#gallery">Gallery</a>
                     <a href="#download">Download</a>
                 </div>
-                <div class="footer-column">
+                <div class="footer-col">
                     <h4>Support</h4>
-                    <a href="https://github.com/0xSevenF/pixelforge/issues" target="_blank">Report Issues</a>
-                    <a href="mailto:mail@xkx.at">Contact</a>
+                    <a href="https://github.com/0xSevenF/pixelforge/issues" target="_blank" rel="noopener">Report Issues</a>
+                    <a href="#" id="footer-contact" class="contact-link">Contact</a>
                 </div>
-                <div class="footer-column">
+                <div class="footer-col">
                     <h4>Resources</h4>
-                    <a href="https://github.com/0xSevenF/pixelforge" target="_blank">GitHub</a>
+                    <a href="https://github.com/0xSevenF/pixelforge" target="_blank" rel="noopener">GitHub</a>
+                    <a href="#technology">Technology</a>
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
-            <p>&copy; 2026 Wena. Created by 0x7F. Beta version.</p>
-            <p class="footer-note">* macOS version coming soon</p>
+            <p>&copy; 2026 Wena. Created by 0x7F.</p>
+            <p>macOS version in development</p>
         </div>
     </div>
 </footer>
 
-<!-- Toast Notification -->
-<div id="toast" class="toast">
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-        <path d="M15 4.5L6.75 12.75L3 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<div id="toast" class="toast" role="status" aria-live="polite">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M13 4L6 11L3 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-    <span>Address copied to clipboard!</span>
+    <span>Address copied</span>
 </div>
 
-<script>
-    // ── Linux modal ──────────────────────────────────────
-    const modal     = document.getElementById('linuxModal');
-    const closeBtn  = document.getElementById('linuxModalClose');
-
-    function openModal() {
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-    }
-    function closeModal() {
-        modal.classList.remove('open');
-        document.body.style.overflow = '';
-    }
-
-    document.getElementById('openLinuxModal').addEventListener('click', openModal);
-    document.getElementById('openLinuxModalBottom').addEventListener('click', openModal);
-    closeBtn.addEventListener('click', closeModal);
-
-    // Close on backdrop click
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-    });
-
-    // Close on Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
-    });
-
-    // ── Email obfuscation ────────────────────────────────
-    (function () {
-        const user   = "ma" + "il";
-        const domain = "xk" + "x.at";
-        const email  = user + "@" + domain;
-        const link   = document.createElement("a");
-        link.href      = "mailto:" + email;
-        link.textContent = email;
-        document.getElementById("contact-email").appendChild(link);
-    })();
-
-    // ── Crypto copy ──────────────────────────────────────
-    document.querySelectorAll('.crypto-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const address = card.getAttribute('data-address');
-            navigator.clipboard.writeText(address).then(() => {
-                showToast();
-            }).catch(() => {
-                console.error('Failed to copy');
-            });
-        });
-    });
-
-    function showToast() {
-        const toast = document.getElementById('toast');
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 3000);
-    }
-
-    // ── Smooth scroll ────────────────────────────────────
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    });
-
-    // ── Scroll animations ────────────────────────────────
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('.feature-card, .gallery-item').forEach(el => observer.observe(el));
-
-    // ── Navbar scroll effect ─────────────────────────────
-    window.addEventListener('scroll', () => {
-        const nav = document.querySelector('.nav');
-        nav.classList.toggle('scrolled', window.pageYOffset > 100);
-    });
-</script>
-
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
